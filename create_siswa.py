@@ -2,15 +2,18 @@ import asyncio
 import json
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
+from schemas.users import UserRole
 from models import (
     UsersModel,
     TaskModel,
-    UserRole,
     SiswaProfileModel,
     KelasModel,
     TahunAjaranModel,
+    ModulModel,
+    MataPelajaranModel,
 )
 from core import get_password_hash
+from schemas.jurusan import Jurusan
 
 
 async def create_siswa():
@@ -23,6 +26,8 @@ async def create_siswa():
             SiswaProfileModel,
             KelasModel,
             TahunAjaranModel,
+            ModulModel,
+            MataPelajaranModel,
         ],
     )
 
@@ -30,9 +35,9 @@ async def create_siswa():
     with open("data_dasbor_analitik_XI_IPS_2.json", "r") as f:
         data = json.load(f)
 
-    target_kelas = await KelasModel.find_one(KelasModel.kode_unik == "DDUBLJ")
+    target_kelas = await KelasModel.find_one(KelasModel.kode_unik == "984RFR")
     if not target_kelas:
-        print("Kelas dengan kode DDUBLJ tidak ditemukan!")
+        print("Kelas dengan kode 984RFR tidak ditemukan!")
         return
 
     siswa_list = data.get("data_siswa", [])
@@ -71,6 +76,7 @@ async def create_siswa():
             gaya_belajar=s["gaya_belajar"],
             kognitif=s["kognitif"],
             keaktifan=keaktifan,
+            id_jurusan=Jurusan.IPS,
         )
         await profile.insert()
 

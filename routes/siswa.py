@@ -1,7 +1,6 @@
 from fastapi import APIRouter, status, Depends
 from typing import List
-from models import SiswaProfileResponse, UserResponse
-from schemas.base_schema import APIResponse
+from schemas import SiswaProfileResponse, UserResponse, APIResponse
 from controllers import SiswaController
 from core import get_current_user
 

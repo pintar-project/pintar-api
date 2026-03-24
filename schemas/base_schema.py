@@ -10,4 +10,3 @@ class APIResponse(BaseModel, Generic[T]):
     data: Optional[T] = None
     token: Optional[dict] = None
     statistik_pemetaan: Optional[dict] = None
-    header_kelas: Optional[dict] = None

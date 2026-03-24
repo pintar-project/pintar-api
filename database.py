@@ -4,13 +4,18 @@ from models import (
     TaskModel,
     UsersModel,
     TahunAjaranModel,
+    MataPelajaranModel,
     KelasModel,
+    ModulModel,
     SiswaProfileModel,
 )
 
 
+import os
+
 async def init_db():
-    client = AsyncIOMotorClient("mongodb://localhost:27017/pintar-project")
+    mongodb_uri = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/pintar-project")
+    client = AsyncIOMotorClient(mongodb_uri)
 
     await init_beanie(
         database=client.get_default_database(),
@@ -18,7 +23,9 @@ async def init_db():
             TaskModel,
             UsersModel,
             TahunAjaranModel,
+            MataPelajaranModel,
             KelasModel,
+            ModulModel,
             SiswaProfileModel,
         ],
     )

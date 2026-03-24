@@ -1,7 +1,11 @@
 import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
-from models import UsersModel, TaskModel, UserRole, TahunAjaranModel
+from schemas.users import UserRole
+from models import (
+    UsersModel, TaskModel, TahunAjaranModel, KelasModel,
+    ModulModel, MataPelajaranModel, SiswaProfileModel
+)
 from core import get_password_hash
 
 
@@ -9,7 +13,10 @@ async def create_admin():
     client = AsyncIOMotorClient("mongodb://localhost:27017/pintar-project")
     await init_beanie(
         database=client.get_default_database(),
-        document_models=[TaskModel, UsersModel, TahunAjaranModel],
+        document_models=[
+            TaskModel, UsersModel, TahunAjaranModel, KelasModel,
+            ModulModel, MataPelajaranModel, SiswaProfileModel
+        ],
     )
 
     existing_admin = await UsersModel.find_one({"email": "admin_prod@gmail.com"})

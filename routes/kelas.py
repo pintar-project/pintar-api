@@ -1,11 +1,6 @@
 from fastapi import APIRouter, status, Depends
-from models import (
-    UserResponse,
-    KelasCreated,
-    KelasResponse,
-)
+from schemas import KelasCreated, KelasResponse, UserResponse, APIResponse
 from typing import List
-from schemas.base_schema import APIResponse
 from controllers import AuthController, KelasController
 from core import get_current_user
 

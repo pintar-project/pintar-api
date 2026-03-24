@@ -1,7 +1,6 @@
 from fastapi import APIRouter, status, Depends
-from models import UserLogin, UserResponse, UserLoginResponse, UsersCreated
-from schemas.base_schema import APIResponse
-from controllers import AuthController
+from schemas import UserLogin, UserResponse, APIResponse
+from controllers.auth import AuthController
 from core import get_current_user
 
 router = APIRouter(prefix="/auth", tags=["Auth"])

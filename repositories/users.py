@@ -1,39 +1,22 @@
-from models import KelasModel
-from models import UsersModel, UserRole, SiswaProfileModel
+from models import UsersModel, SiswaProfileModel, KelasModel
+from schemas import UserRole
 from .database import Database
-from core.security import get_password_hash
 
 
 class UsersRepository(Database):
     async def insert(self, **kwargs):
-        username = kwargs.get("username")
-        nama_lengkap = kwargs.get("nama_lengkap")
-        email = kwargs.get("email")
-        password = kwargs.get("password")
-        avatar_url = kwargs.get("avatar_url")
-        role = kwargs.get("role")
-
-        if password:
-            hashed_password = get_password_hash(password)
-        else:
-            hashed_password = None
-
-        new_user = UsersModel(
-            username=username,
-            nama_lengkap=nama_lengkap,
-            email=email,
-            password=hashed_password,
-            avatar_url=avatar_url,
-            role=role,
-        )
+        new_user = UsersModel(**kwargs)
         await new_user.insert()
         return new_user
 
     async def get(self, category, **kwargs):
         email = kwargs.get("email")
         kode_kelas = kwargs.get("kode_kelas")
+        id = kwargs.get("id")
         if category == "get_user_by_email":
             return await UsersModel.find_one({"email": email})
+        elif category == "get_user_by_id":
+            return await UsersModel.get(id)
         elif category == "get_siswa_by_kelas":
             kelas = await KelasModel.find_one(KelasModel.kode_unik == kode_kelas)
 
@@ -88,33 +71,7 @@ class UsersRepository(Database):
             return result
 
     async def update(self, category, **kwargs):
-        username = kwargs.get("username")
-        nama_lengkap = kwargs.get("nama_lengkap")
-        email = kwargs.get("email")
-        password = kwargs.get("password")
-        avatar_url = kwargs.get("avatar_url")
-        if category == "create_guru":
-            data_guru = UsersModel(
-                username=username,
-                nama_lengkap=nama_lengkap,
-                email=email,
-                password=password,
-                avatar_url=avatar_url,
-                role=UserRole.GURU,
-            )
-            await data_guru.insert()
-            return data_guru
-        elif category == "create_siswa":
-            data_siswa = UsersModel(
-                username=username,
-                nama_lengkap=nama_lengkap,
-                email=email,
-                password=password,
-                avatar_url=avatar_url,
-                role=UserRole.SISWA,
-            )
-            await data_siswa.insert()
-            return data_siswa
+        pass
 
     async def delete(self, **kwargs):
         pass

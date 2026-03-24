@@ -1,12 +1,13 @@
 from fastapi import APIRouter, status, Depends
-from models import (
+from schemas import (
     UserResponse,
     UsersCreated,
     TahunAjaranResponse,
     TahunAjaranCreated,
     TahunAjaranUpdated,
+    APIResponse,
+    SiswaCreated,
 )
-from schemas.base_schema import APIResponse
 from controllers import AuthController, TahunAjaranController
 from core import get_current_user
 
@@ -19,6 +20,7 @@ tahun_ajaran_controller = TahunAjaranController()
     "/",
     response_model=APIResponse[TahunAjaranResponse],
     status_code=status.HTTP_201_CREATED,
+    response_model_exclude_none=True,
 )
 async def create_tahun_ajaran(
     user_in: TahunAjaranCreated, current_user: UserResponse = Depends(get_current_user)
@@ -30,6 +32,7 @@ async def create_tahun_ajaran(
     "/{id}/is-active",
     response_model=APIResponse[TahunAjaranResponse],
     status_code=status.HTTP_201_CREATED,
+    response_model_exclude_none=True,
 )
 async def tahun_ajaran_is_active(
     id: str,
@@ -45,6 +48,7 @@ async def tahun_ajaran_is_active(
     "/guru",
     response_model=APIResponse[UserResponse],
     status_code=status.HTTP_201_CREATED,
+    response_model_exclude_none=True,
 )
 async def create_guru(
     user_in: UsersCreated, current_user: UserResponse = Depends(get_current_user)
@@ -56,8 +60,9 @@ async def create_guru(
     "/siswa",
     response_model=APIResponse[UserResponse],
     status_code=status.HTTP_201_CREATED,
+    response_model_exclude_none=True,
 )
 async def create_siswa(
-    user_in: UsersCreated, current_user: UserResponse = Depends(get_current_user)
+    user_in: SiswaCreated, current_user: UserResponse = Depends(get_current_user)
 ):
     return await auth_controller.create_siswa(user_in.model_dump(), current_user)

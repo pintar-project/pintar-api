@@ -1,7 +1,10 @@
 import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
-from models import UsersModel, TaskModel, TahunAjaranModel, KelasModel, ModulModel
+from models import (
+    UsersModel, TaskModel, TahunAjaranModel, KelasModel,
+    ModulModel, MataPelajaranModel, SiswaProfileModel
+)
 
 
 async def buat_tahun_ajaran(nama_tahun: str, semester: int, set_aktif: bool = False):
@@ -14,6 +17,8 @@ async def buat_tahun_ajaran(nama_tahun: str, semester: int, set_aktif: bool = Fa
             TahunAjaranModel,
             KelasModel,
             ModulModel,
+            MataPelajaranModel,
+            SiswaProfileModel,
         ],
     )
 

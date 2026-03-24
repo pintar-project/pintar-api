@@ -1,7 +1,9 @@
 from repositories import KelasRepository
 from fastapi import HTTPException, status
 from pymongo.errors import DuplicateKeyError
-from models import UserRole
+import re
+from schemas import UserRole, Tingkat
+from schemas.jurusan import Jurusan
 
 
 class KelasController:
@@ -32,9 +34,35 @@ class KelasController:
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="anda tidak memiliki akses untuk membuat kelas",
             )
+
+        pola = r"^([VIX]+)\s+(IPA|IPS)\s+(\d+)$"
+        match = re.match(pola, user_in["nama"].upper())
+
+        if not match:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Format nama kelas salah. Gunakan format 'JENJANG JURUSAN NOMOR' (contoh: XI IPS 2).",
+            )
+
+        extracted_tingkat = match.group(1)
+        extracted_jurusan = match.group(2)
+
+        if extracted_tingkat not in [t.value for t in Tingkat]:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Jenjang '{extracted_tingkat}' tidak valid. Gunakan X, XI, atau XII.",
+            )
+
+        tingkat = Tingkat(extracted_tingkat)
+        jurusan = Jurusan(extracted_jurusan)
+
         try:
             data = await self.repo.insert(
-                f"{current_user.id}", user_in["nama"], user_in["deskripsi"]
+                f"{current_user.id}",
+                user_in["nama"],
+                user_in["deskripsi"],
+                tingkat,
+                jurusan,
             )
             if isinstance(data, dict) and "error" in data:
                 raise HTTPException(

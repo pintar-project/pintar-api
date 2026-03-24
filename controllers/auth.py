@@ -1,8 +1,9 @@
+from models import SiswaProfileModel
 from repositories import UsersRepository
 from fastapi import HTTPException, status
 from core import verify_password, JwtToken, get_password_hash
 import datetime
-from models import UserResponse, UserRole
+from schemas import UserResponse, UserRole
 
 
 class AuthController:
@@ -41,7 +42,8 @@ class AuthController:
             )
         user_data["password"] = get_password_hash(user_data["password"])
         user_data["avatar_url"] = "http://localhost:8000/users/avatar"
-        await self.repo.update("create_guru", **user_data)
+        user_data["role"] = UserRole.GURU
+        await self.repo.insert(**user_data)
         return {"message": "oke", "data": current_user}
 
     async def create_siswa(self, user_data: dict, current_user: UserResponse):
@@ -50,7 +52,22 @@ class AuthController:
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="kamu tidak punya akses untuk membuat siswa",
             )
+        
+        # Extract profile data
+        profile_fields = ["id_siswa", "gaya_belajar", "kognitif", "keaktifan", "id_jurusan"]
+        profile_data = {field: user_data.pop(field) for field in profile_fields if field in user_data}
+        
         user_data["password"] = get_password_hash(user_data["password"])
         user_data["avatar_url"] = "http://localhost:8000/users/avatar"
-        await self.repo.update("create_siswa", **user_data)
-        return {"message": "oke", "data": current_user}
+        user_data["role"] = UserRole.SISWA
+        
+        new_user = await self.repo.insert(**user_data)
+        
+        # Create SiswaProfile
+        profile = SiswaProfileModel(
+            user=new_user,
+            **profile_data
+        )
+        await profile.insert()
+        
+        return {"message": "oke", "data": new_user}

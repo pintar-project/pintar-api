@@ -1,14 +1,22 @@
 import asyncio
 from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
-from models import UsersModel, TaskModel, UserRole
+from schemas.users import UserRole
+from models import (
+    UsersModel, TaskModel, TahunAjaranModel, KelasModel,
+    ModulModel, MataPelajaranModel, SiswaProfileModel
+)
 from core import get_password_hash
 
 
 async def create_guru():
     client = AsyncIOMotorClient("mongodb://localhost:27017/pintar-project")
     await init_beanie(
-        database=client.get_default_database(), document_models=[TaskModel, UsersModel]
+        database=client.get_default_database(),
+        document_models=[
+            TaskModel, UsersModel, TahunAjaranModel, KelasModel,
+            ModulModel, MataPelajaranModel, SiswaProfileModel
+        ],
     )
 
     existing_guru = await UsersModel.find_one({"email": "guru@gmail.com"})

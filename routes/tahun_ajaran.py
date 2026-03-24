@@ -1,6 +1,5 @@
 from fastapi import APIRouter, status, Depends
-from models import UserResponse, TahunAjaranResponse
-from schemas.base_schema import APIResponse
+from schemas import TahunAjaranResponse, APIResponse, UserResponse
 from controllers import TahunAjaranController
 from core import get_current_user
 

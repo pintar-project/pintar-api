@@ -1,0 +1,19 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Use environment variable for MongoDB URI
+ENV MONGODB_URI=mongodb://mongodb:27017/pintar-project
+
+EXPOSE 8000
+
+CMD ["fastapi", "run", "main.py", "--host", "0.0.0.0", "--port", "8000"]
