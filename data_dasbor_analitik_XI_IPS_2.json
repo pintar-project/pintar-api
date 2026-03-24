@@ -1,0 +1,323 @@
+{
+    "header_kelas": {
+        "kelas": "XI IPS 2",
+        "tahun_ajaran": "2026/2027",
+        "semester": "1 (Ganjil)",
+        "jumlah_siswa": 43
+    },
+    "statistik_pemetaan": {
+        "kognitif": {
+            "tinggi": 15,
+            "sedang": 19,
+            "rendah": 9
+        },
+        "gaya_belajar": {
+            "auditori": 28,
+            "visual": 10,
+            "kinestetik": 5
+        }
+    },
+    "data_siswa": [
+        {
+            "id_siswa": "ID-1243",
+            "nama": "Andrian Muhammad",
+            "gaya_belajar": "Visual",
+            "kognitif": "Tinggi",
+            "keaktifan": "93.9%"
+        },
+        {
+            "id_siswa": "ID-1244",
+            "nama": "Alya Zahra",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Tinggi",
+            "keaktifan": "95.96%"
+        },
+        {
+            "id_siswa": "ID-1245",
+            "nama": "Aidan Kareem",
+            "gaya_belajar": "Kinestetik",
+            "kognitif": "Tinggi",
+            "keaktifan": "95.09%"
+        },
+        {
+            "id_siswa": "ID-1246",
+            "nama": "Rafif Alvaro",
+            "gaya_belajar": "Visual",
+            "kognitif": "Sedang",
+            "keaktifan": "73.44%"
+        },
+        {
+            "id_siswa": "ID-1247",
+            "nama": "Naufal Rayyan",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Rendah",
+            "keaktifan": "45.8%"
+        },
+        {
+            "id_siswa": "ID-1248",
+            "nama": "Siti Pratama",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "74.73%"
+        },
+        {
+            "id_siswa": "ID-1249",
+            "nama": "Budi Sari",
+            "gaya_belajar": "Visual",
+            "kognitif": "Rendah",
+            "keaktifan": "51.69%"
+        },
+        {
+            "id_siswa": "ID-1250",
+            "nama": "Lestari Wulandari",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "73.16%"
+        },
+        {
+            "id_siswa": "ID-1251",
+            "nama": "Guntur Saputra",
+            "gaya_belajar": "Visual",
+            "kognitif": "Tinggi",
+            "keaktifan": "97.26%"
+        },
+        {
+            "id_siswa": "ID-1252",
+            "nama": "Intan Utami",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "83.15%"
+        },
+        {
+            "id_siswa": "ID-1253",
+            "nama": "Dimas Hidayat",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "74.72%"
+        },
+        {
+            "id_siswa": "ID-1254",
+            "nama": "Eka Putra",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Tinggi",
+            "keaktifan": "93.52%"
+        },
+        {
+            "id_siswa": "ID-1255",
+            "nama": "Fadel Wijaya",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "75.93%"
+        },
+        {
+            "id_siswa": "ID-1256",
+            "nama": "Gisela Kusuma",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "83.72%"
+        },
+        {
+            "id_siswa": "ID-1257",
+            "nama": "Hana Ramadhan",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Tinggi",
+            "keaktifan": "90.97%"
+        },
+        {
+            "id_siswa": "ID-1258",
+            "nama": "Irfan Fitri",
+            "gaya_belajar": "Visual",
+            "kognitif": "Sedang",
+            "keaktifan": "73.97%"
+        },
+        {
+            "id_siswa": "ID-1259",
+            "nama": "Joko Santoso",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Rendah",
+            "keaktifan": "51.17%"
+        },
+        {
+            "id_siswa": "ID-1260",
+            "nama": "Kurnia Larasati",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Rendah",
+            "keaktifan": "59.03%"
+        },
+        {
+            "id_siswa": "ID-1261",
+            "nama": "Lutfi Puspita",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "73.94%"
+        },
+        {
+            "id_siswa": "ID-1262",
+            "nama": "Maya Ananda",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Tinggi",
+            "keaktifan": "92.6%"
+        },
+        {
+            "id_siswa": "ID-1263",
+            "nama": "Nanda Maulana",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "83.47%"
+        },
+        {
+            "id_siswa": "ID-1264",
+            "nama": "Olivia Setyawan",
+            "gaya_belajar": "Visual",
+            "kognitif": "Sedang",
+            "keaktifan": "75.99%"
+        },
+        {
+            "id_siswa": "ID-1265",
+            "nama": "Putu Pratiwi",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "73.29%"
+        },
+        {
+            "id_siswa": "ID-1266",
+            "nama": "Qori Gunawan",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Rendah",
+            "keaktifan": "69.94%"
+        },
+        {
+            "id_siswa": "ID-1267",
+            "nama": "Rian Permata",
+            "gaya_belajar": "Visual",
+            "kognitif": "Sedang",
+            "keaktifan": "77.64%"
+        },
+        {
+            "id_siswa": "ID-1268",
+            "nama": "Sari Budiarto",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "71.36%"
+        },
+        {
+            "id_siswa": "ID-1269",
+            "nama": "Tegar Rahayu",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "70.71%"
+        },
+        {
+            "id_siswa": "ID-1270",
+            "nama": "Umar Firmansyah",
+            "gaya_belajar": "Kinestetik",
+            "kognitif": "Rendah",
+            "keaktifan": "47.74%"
+        },
+        {
+            "id_siswa": "ID-1271",
+            "nama": "Vina Nugraha",
+            "gaya_belajar": "Kinestetik",
+            "kognitif": "Rendah",
+            "keaktifan": "60.69%"
+        },
+        {
+            "id_siswa": "ID-1272",
+            "nama": "Wawan Aulia",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "81.88%"
+        },
+        {
+            "id_siswa": "ID-1273",
+            "nama": "Xena Sudarsono",
+            "gaya_belajar": "Visual",
+            "kognitif": "Tinggi",
+            "keaktifan": "90.49%"
+        },
+        {
+            "id_siswa": "ID-1274",
+            "nama": "Yuda Wahyuningsih",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Tinggi",
+            "keaktifan": "85.83%"
+        },
+        {
+            "id_siswa": "ID-1275",
+            "nama": "Zahra Mulyono",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "75.72%"
+        },
+        {
+            "id_siswa": "ID-1276",
+            "nama": "Bagus Handayani",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Tinggi",
+            "keaktifan": "97.95%"
+        },
+        {
+            "id_siswa": "ID-1277",
+            "nama": "Citra Susanto",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Rendah",
+            "keaktifan": "58.23%"
+        },
+        {
+            "id_siswa": "ID-1278",
+            "nama": "Doni Kartika",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Tinggi",
+            "keaktifan": "97.62%"
+        },
+        {
+            "id_siswa": "ID-1279",
+            "nama": "Endah Basuki",
+            "gaya_belajar": "Visual",
+            "kognitif": "Tinggi",
+            "keaktifan": "96.19%"
+        },
+        {
+            "id_siswa": "ID-1280",
+            "nama": "Farhan Widyawati",
+            "gaya_belajar": "Visual",
+            "kognitif": "Tinggi",
+            "keaktifan": "85.15%"
+        },
+        {
+            "id_siswa": "ID-1281",
+            "nama": "Gita Setiawan",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "80.81%"
+        },
+        {
+            "id_siswa": "ID-1282",
+            "nama": "Heri Utomo",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Sedang",
+            "keaktifan": "80.23%"
+        },
+        {
+            "id_siswa": "ID-1283",
+            "nama": "Indah Nasution",
+            "gaya_belajar": "Kinestetik",
+            "kognitif": "Tinggi",
+            "keaktifan": "91.98%"
+        },
+        {
+            "id_siswa": "ID-1284",
+            "nama": "Juna Siregar",
+            "gaya_belajar": "Kinestetik",
+            "kognitif": "Tinggi",
+            "keaktifan": "88.47%"
+        },
+        {
+            "id_siswa": "ID-1285",
+            "nama": "Kiki Ginting",
+            "gaya_belajar": "Auditori",
+            "kognitif": "Rendah",
+            "keaktifan": "61.02%"
+        }
+    ]
+}
