@@ -14,6 +14,13 @@ class AuthController:
     async def user_login(self, user_data: dict):
         email = user_data["email"]
         user_database = await self.repo.get("get_user_by_email", email=email)
+        
+        if not user_database:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="password/email salah",
+            )
+            
         password_verif = verify_password(user_data["password"], user_database.password)
         if not password_verif:
             raise HTTPException(
