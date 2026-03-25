@@ -7,7 +7,7 @@ from schemas.jurusan import Jurusan
 async def create_mapel():
     await init_db()
 
-    existing_mapel = await MataPelajaranModel.find_one({"nama_mapel": "Sosiologi"})
+    existing_mapel = await MataPelajaranModel.find_one(MataPelajaranModel.nama_mapel == "Sosiologi")
     if not existing_mapel:
         mapel = MataPelajaranModel(
             nama_mapel="Sosiologi",
@@ -23,7 +23,8 @@ async def create_mapel():
 
     target_kelas = await KelasModel.find_one(KelasModel.kode_unik == "984RFR")
     if target_kelas:
-        mapel_ids = [str(m.id) for m in target_kelas.daftar_mapel]
+        # Avoid str(m.id) which triggers fetch. Check ref.id for lazy links.
+        mapel_ids = [str(m.ref.id) if hasattr(m, "ref") else str(m.id) for m in target_kelas.daftar_mapel]
         if str(existing_mapel.id) not in mapel_ids:
             target_kelas.daftar_mapel.append(existing_mapel)
             await target_kelas.save()

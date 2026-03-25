@@ -7,10 +7,10 @@ async def create_modul():
     await init_db()
     
     # Prasyarat
-    mapel = await MataPelajaranModel.find_one({"nama_mapel": "Sosiologi"})
-    admin = await UsersModel.find_one({"email": "admin_prod@gmail.com"})
-    tahun = await TahunAjaranModel.find_one({"is_active": True})
-    kelas = await KelasModel.find_one({"kode_unik": "984RFR"})
+    mapel = await MataPelajaranModel.find_one(MataPelajaranModel.nama_mapel == "Sosiologi")
+    admin = await UsersModel.find_one(UsersModel.email == "admin_prod@gmail.com")
+    tahun = await TahunAjaranModel.find_one(TahunAjaranModel.is_active == True)
+    kelas = await KelasModel.find_one(KelasModel.kode_unik == "984RFR")
     
     if not all([mapel, admin, tahun, kelas]):
         print("Error: Mapel, Admin, Tahun, or Kelas not found. Run other scripts first.")
@@ -49,7 +49,8 @@ async def create_modul():
             print(f"Modul '{data['judul']}' created successfully!")
             
             # Link to class
-            if modul not in kelas.daftar_modul:
+            modul_ids = [str(m.ref.id) if hasattr(m, "ref") else str(m.id) for m in kelas.daftar_modul]
+            if str(modul.id) not in modul_ids:
                 kelas.daftar_modul.append(modul)
         else:
             print(f"Modul '{data['judul']}' already exists!")

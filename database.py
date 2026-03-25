@@ -9,13 +9,10 @@ from models import (
     ModulModel,
     SiswaProfileModel,
 )
-
-
-import os
+from core import settings
 
 async def init_db():
-    mongodb_uri = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/pintar-project")
-    client = AsyncIOMotorClient(mongodb_uri)
+    client = AsyncIOMotorClient(settings.MONGODB_URI)
 
     await init_beanie(
         database=client.get_default_database(),
