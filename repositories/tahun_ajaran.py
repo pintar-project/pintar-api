@@ -11,7 +11,11 @@ class TahunAjaranRepository(Database):
     async def get(self, category, **kwargs):
         id = kwargs.get("id")
         if category == "get_tahun_ajaran":
-            return await TahunAjaranModel.find_one({"is_active": True})
+            active = await TahunAjaranModel.find_one({"is_active": True})
+            if active:
+                return active
+            # Fallback to the latest one if no active found
+            return await TahunAjaranModel.find_all().sort("-created_at").first_or_none()
         if category == "get_all":
             return await TahunAjaranModel.find_all().to_list()
         if category == "get_by_id":

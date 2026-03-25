@@ -11,7 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Use environment variable for MongoDB URI
 ENV MONGODB_URI=mongodb://mongodb:27017/pintar-project
 
 EXPOSE 8000

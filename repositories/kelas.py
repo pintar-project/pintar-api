@@ -39,6 +39,10 @@ class KelasRepository(Database):
                 TahunAjaranModel.is_active == True
             )
             if not tahun_aktif:
+                # Fallback to the latest one if no active found
+                tahun_aktif = await TahunAjaranModel.find_all().sort("-created_at").first_or_none()
+            
+            if not tahun_aktif:
                 return []
             daftar_kelas = await KelasModel.find(
                 KelasModel.tahun_ajaran.id == tahun_aktif.id

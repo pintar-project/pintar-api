@@ -23,7 +23,7 @@ async def create_mapel():
 
     target_kelas = await KelasModel.find_one(KelasModel.kode_unik == "984RFR")
     if target_kelas:
-        mapel_ids = [str(m.id) for m in target_kelas.daftar_mapel]
+        mapel_ids = [str(m.ref.id if hasattr(m, "ref") else m.id) for m in target_kelas.daftar_mapel]
         if str(existing_mapel.id) not in mapel_ids:
             target_kelas.daftar_mapel.append(existing_mapel)
             await target_kelas.save()

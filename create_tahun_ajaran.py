@@ -12,22 +12,25 @@ async def buat_tahun_ajaran(nama_tahun: str, semester: int, set_aktif: bool = Fa
             {"$set": {"is_active": False}}
         )
 
-    # 2. Buat dokumen baru
     tahun_baru = TahunAjaranModel(
         nama=nama_tahun, semester=semester, is_active=set_aktif
     )
-
-    # 3. Simpan ke database
     try:
         await tahun_baru.insert()
         print(f"Tahun ajaran {nama_tahun} berhasil dibuat!")
         return tahun_baru
-    except Exception as e:
+    except Exception:
         # Menangani jika nama tahun ajaran sudah ada (Duplicate Key Error)
-        print(f"Error: Tahun ajaran {nama_tahun} sudah terdaftar.")
-        return {"error": f"Tahun ajaran {nama_tahun} sudah terdaftar."}
+        print(f"Tahun ajaran {nama_tahun} sudah terdaftar. Mengupdate status aktif...")
+        existing = await TahunAjaranModel.find_one(TahunAjaranModel.nama == nama_tahun)
+        if existing:
+            existing.semester = semester
+            existing.is_active = set_aktif
+            await existing.save()
+            print(f"Tahun ajaran {nama_tahun} berhasil diupdate!")
+            return existing
+        return {"error": f"Gagal mengupdate atau membuat tahun ajaran {nama_tahun}."}
 
 
 if __name__ == "__main__":
-    # Contoh penggunaan
     asyncio.run(buat_tahun_ajaran("2026/2027", semester=1, set_aktif=True))
