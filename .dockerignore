@@ -12,7 +12,6 @@ venv/
 .idea
 *.pdf
 assets/
-data_dasbor_analitik_XI_IPS_2.json
 db_dump.json
 dump_db.py
 gen_init_js.py

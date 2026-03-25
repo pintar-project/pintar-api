@@ -1,32 +1,11 @@
 import asyncio
-from motor.motor_asyncio import AsyncIOMotorClient
-from beanie import init_beanie
-from models import (
-    UsersModel,
-    TaskModel,
-    TahunAjaranModel,
-    KelasModel,
-    ModulModel,
-    MataPelajaranModel,
-    SiswaProfileModel,
-)
+from database import init_db
+from models import MataPelajaranModel, KelasModel
 from schemas.jurusan import Jurusan
 
 
 async def create_mapel():
-    client = AsyncIOMotorClient("mongodb://localhost:27017/pintar-project")
-    await init_beanie(
-        database=client.get_default_database(),
-        document_models=[
-            TaskModel,
-            UsersModel,
-            TahunAjaranModel,
-            KelasModel,
-            ModulModel,
-            MataPelajaranModel,
-            SiswaProfileModel,
-        ],
-    )
+    await init_db()
 
     existing_mapel = await MataPelajaranModel.find_one({"nama_mapel": "Sosiologi"})
     if not existing_mapel:

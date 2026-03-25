@@ -1,35 +1,14 @@
 import asyncio
 import json
-from motor.motor_asyncio import AsyncIOMotorClient
-from beanie import init_beanie
+from database import init_db
+from models import UsersModel, SiswaProfileModel, KelasModel
 from schemas.users import UserRole
-from models import (
-    UsersModel,
-    TaskModel,
-    SiswaProfileModel,
-    KelasModel,
-    TahunAjaranModel,
-    ModulModel,
-    MataPelajaranModel,
-)
-from core import get_password_hash
 from schemas.jurusan import Jurusan
+from core import get_password_hash
 
 
 async def create_siswa():
-    client = AsyncIOMotorClient("mongodb://localhost:27017/pintar-project")
-    await init_beanie(
-        database=client.get_default_database(),
-        document_models=[
-            TaskModel,
-            UsersModel,
-            SiswaProfileModel,
-            KelasModel,
-            TahunAjaranModel,
-            ModulModel,
-            MataPelajaranModel,
-        ],
-    )
+    await init_db()
 
     # Load JSON data
     with open("data_dasbor_analitik_XI_IPS_2.json", "r") as f:
