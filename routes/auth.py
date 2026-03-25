@@ -3,7 +3,7 @@ from schemas import UserLogin, UserResponse, APIResponse
 from controllers.auth import AuthController
 from core import get_current_user
 
-router = APIRouter(prefix="/auth", tags=["Auth"])
+router = APIRouter(prefix="/auth", tags=["Auth"], redirect_slashes=False)
 auth_controller = AuthController()
 
 

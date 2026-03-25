@@ -4,7 +4,7 @@ from controllers import AuthController, ModulController
 from core import get_current_user
 from typing import Annotated, Optional
 
-router = APIRouter(prefix="/modul", tags=["Modul"])
+router = APIRouter(prefix="/modul", tags=["Modul"], redirect_slashes=False)
 auth_controller = AuthController()
 modul_controller = ModulController()
 

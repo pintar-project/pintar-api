@@ -11,7 +11,7 @@ from schemas import (
 from controllers import AuthController, TahunAjaranController
 from core import get_current_user
 
-router = APIRouter(prefix="/tahun-ajaran", tags=["Tahun Ajaran"])
+router = APIRouter(prefix="/admin", tags=["Admin"], redirect_slashes=False)
 auth_controller = AuthController()
 tahun_ajaran_controller = TahunAjaranController()
 

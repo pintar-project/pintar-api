@@ -4,7 +4,7 @@ from typing import List
 from controllers import AuthController, KelasController
 from core import get_current_user
 
-router = APIRouter(prefix="/kelas", tags=["Kelas"])
+router = APIRouter(prefix="/kelas", tags=["Kelas"], redirect_slashes=False)
 auth_controller = AuthController()
 kelas_controller = KelasController()
 
@@ -22,7 +22,7 @@ async def create_kelas(
 
 
 @router.get(
-    "/",
+    "",
     response_model=APIResponse[List[KelasResponse]],
     status_code=status.HTTP_200_OK,
     response_model_exclude_none=True,

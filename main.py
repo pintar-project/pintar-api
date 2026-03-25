@@ -66,9 +66,13 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     )
 
 
-app.include_router(auth_router)
-app.include_router(siswa_router)
-app.include_router(admin_router)
-app.include_router(kelas_router)
-app.include_router(modul_router)
-app.include_router(tahun_ajaran_router)
+api_app = FastAPI()
+
+api_app.include_router(auth_router)
+api_app.include_router(siswa_router)
+api_app.include_router(admin_router)
+api_app.include_router(kelas_router)
+api_app.include_router(modul_router)
+api_app.include_router(tahun_ajaran_router)
+
+app.mount("/api", api_app)

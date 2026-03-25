@@ -4,12 +4,12 @@ from schemas import SiswaProfileResponse, UserResponse, APIResponse
 from controllers import SiswaController
 from core import get_current_user
 
-router = APIRouter(prefix="/siswa", tags=["Siswa"])
+router = APIRouter(prefix="/siswa", tags=["Siswa"], redirect_slashes=False)
 siswa_controller = SiswaController()
 
 
 @router.get(
-    "/",
+    "",
     response_model=APIResponse[List[SiswaProfileResponse]],
     status_code=status.HTTP_200_OK,
     response_model_exclude_none=True,

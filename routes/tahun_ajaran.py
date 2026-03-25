@@ -3,12 +3,12 @@ from schemas import TahunAjaranResponse, APIResponse, UserResponse
 from controllers import TahunAjaranController
 from core import get_current_user
 
-router = APIRouter(prefix="/tahun-ajaran", tags=["Tahun Ajaran"])
+router = APIRouter(prefix="/tahun-ajaran", tags=["Tahun Ajaran"], redirect_slashes=False)
 tahun_ajaran_controller = TahunAjaranController()
 
 
 @router.get(
-    "/",
+    "",
     response_model=APIResponse[TahunAjaranResponse],
     status_code=status.HTTP_200_OK,
     response_model_exclude_none=True,
