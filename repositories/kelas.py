@@ -41,7 +41,7 @@ class KelasRepository(Database):
             if not tahun_aktif:
                 return []
             daftar_kelas = await KelasModel.find(
-                {"tahun_ajaran.$id": tahun_aktif.id}
+                KelasModel.tahun_ajaran.id == tahun_aktif.id
             ).to_list()
             for kelas in daftar_kelas:
                 if kelas.pembuat and not isinstance(kelas.pembuat, UsersModel):

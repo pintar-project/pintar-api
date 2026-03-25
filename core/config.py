@@ -5,7 +5,7 @@ class Settings(BaseSettings):
     CLOUDINARY_CLOUD_NAME: str
     CLOUDINARY_API_KEY: str
     CLOUDINARY_API_SECRET: str
-    MONGODB_URI: str
+    API_PORT: int = 8000
 
     class Config:
         env_file = ".env"

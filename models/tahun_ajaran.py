@@ -1,6 +1,5 @@
 from .timestamp import TimestampDocument
 from schemas import TahunAjaranCreated
-from pymongo import IndexModel, ASCENDING
 
 
 class TahunAjaranModel(TimestampDocument, TahunAjaranCreated):
@@ -8,7 +7,4 @@ class TahunAjaranModel(TimestampDocument, TahunAjaranCreated):
 
     class Settings:
         name = "tahun_ajaran"
-        indexes = [
-            IndexModel([("nama", ASCENDING), ("semester", ASCENDING)], unique=True),
-            "deleted_at"
-        ]
+        indexes = ["deleted_at"]

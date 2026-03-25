@@ -19,9 +19,6 @@ async def create_siswa():
         print("Kelas dengan kode 984RFR tidak ditemukan!")
         return
 
-    # Clear existing participants mapping to avoid broken links after deletion
-    target_kelas.peserta = []
-
     siswa_list = data.get("data_siswa", [])
 
     # Delete existing students and their profiles
