@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     API_PORT: int = 8000
 
     class Config:
-        env_file = ".env"
+        env_file = ".env.dev"
         extra = "ignore"
 
 
